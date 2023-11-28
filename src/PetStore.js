@@ -19,7 +19,7 @@ function PetStore() {
     DEFAULT_URL="https://jsonplaceholder.typicode.com/posts"
   }
 
-  function UrlPerros(){
+  function UrlComment(){
     DEFAULT_URL="https://jsonplaceholder.typicode.com/comments"
   }
   function UrlAlbums(){
@@ -34,7 +34,7 @@ function PetStore() {
     <div>
       <div className='button'>
         <button onClick={UrlPosts}>Posts</button>
-        <button onClick={UrlPerros}>Comments</button>
+        <button onClick={UrlComment}>Comments</button>
         <button onClick={UrlAlbums}>Albums</button>
       </div>
 
