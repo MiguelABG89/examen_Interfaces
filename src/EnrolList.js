@@ -81,28 +81,28 @@ const EnrolList = () => {
 
   const validar = useCallback(
     function () {
-      if (NomUser.length <= 10) {
+      if (NomUser.length <= 10 && NomUser.length !== 0) {
         setMensajeError("");
 
       } else {
         setMensajeError("El máximo de caracteres para el Nombre son 10 y tiene que tener texto");
 
       }
-      if (ApeUser.length <= 20) {
+      if (ApeUser.length <= 20 && ApeUser.length !==0) {
         setMensajeError2("");
       } else {
         setMensajeError2("El máximo de caracteres para el Apellido son 15  y tiene que tener texto");
       }
-      if (Email.length <= 20 && Email.includes("@")) {
+      if (Email.length <= 20 && Email.includes("@")&& Email.length !==0) {
         setMensajeError3("");
       } else {
-        setMensajeError3("El máximo de caracteres para el email son 15 y tiene que incluir @");
+        setMensajeError3("El máximo de caracteres para el email son 15, no puede estar vacio y tiene que incluir @");
       }
 
       if (
         (NomUser.length !== 0 && NomUser.length <= 10) &&
         (ApeUser.length !== 0 && ApeUser.length <= 15) &&
-        (Email.length <= 15 && Email.includes("@")) &&
+        (Email.length <= 15 && Email.includes("@")&& Email.length !==0) &&
         (Program !== "")
       ) {
         setButtonActivado(false)
@@ -172,7 +172,7 @@ const EnrolList = () => {
       </div>
 
       <div>
-        <label for="program">Introduce el sexo de usuario: </label>
+        <label for="program">Introduce el Program de usuario: </label>
         <select name="program" value={Program} id="program" onChange={handleInputChangeProgram}>
           <option value="UG">Undergraduate</option>
           <option value="UP">PostGraduate</option>
