@@ -3,7 +3,9 @@
 
 import React, { useState } from "react";
 import Menu from "./Menu";
-const FoodApp = (props) => {
+import { foodAppContext } from "./Context";
+
+const FoodApp = () => {
   const [shopOpen, setShopOpen] = useState("Open");
   const [btnText, setBtnText] = useState("Close");
   const openOrCloseShop = () => {
@@ -15,6 +17,11 @@ const FoodApp = (props) => {
       setBtnText("Closed");
     }
   };
+
+  const menuCtxValue ={
+    isOpen : shopOpen
+  }
+
   return (
     <>
       <div>
@@ -22,8 +29,10 @@ const FoodApp = (props) => {
       </div>
       
       <h1>Just Food online Shop{shopOpen}</h1>
+      <foodAppContext.Provider value={menuCtxValue}>
+        <Menu/>
+      </foodAppContext.Provider>
       
-      <Menu isOpen={shopOpen} />
     </>
   );
 };

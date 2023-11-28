@@ -1,10 +1,13 @@
 import React, { Fragment, useState } from "react";
 import "./FoodOrder.css";
 import { useContext } from "react";
-import { foodItemsContext } from "./App";
+import { foodItemsContext,foodOrderContext } from "./Context";
 
-const FoodOrder = (props) => {
-  const selectedFood = props.food;
+const FoodOrder = () => {
+
+  const ContextoOrder = useContext(foodOrderContext);
+
+  const selectedFood = ContextoOrder.food;
   const [quantity, setQuantity] = useState(1);
   const [totalAmount, setTotalAmount] = useState(selectedFood.price);
   const [isOrdered, setIsOrdered] = useState(false);
@@ -68,7 +71,7 @@ const FoodOrder = (props) => {
           <button className="btn btnOrder" onClick={handleClick}>
             Submit Order
           </button>
-          <button className="btn btnReturnMenu" onClick={props.returnToMenu}>
+          <button className="btn btnReturnMenu" onClick={ContextoOrder.returnToMenu}>
             Return to Menu
           </button>
         </li>

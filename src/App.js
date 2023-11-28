@@ -1,7 +1,7 @@
 import "./App.css";
 import React, { useState } from "react";
 import Foods from "./Foods";
-export const foodItemsContext = React.createContext();
+import foodItemsContext from "./Context";
 const App = () => {
   const [isChooseFoodPage, setIsChooseFoodPage] = useState(false);
   const [menuItems, setMenuItems] = useState([
@@ -42,32 +42,27 @@ const App = () => {
 
   return (
     <foodItemsContext.Provider value={menuItems}>
-    <div className="App">
-      
-        
-      
-      <h3 className="title">Just Food Online Shop</h3>
-     
-        
-          <h4 className="subTitle">Menu Availability</h4>
-          <ul className="ulApp">
-            {menuItems.map((item) => {
-              return (
-                <li key={item.id} className="liApp">
-                  {item.name} - {item.quantity}
-                </li>
-              );
-            })}
-          </ul>
-        
-      
-      
-        <Foods
-          foodItems={menuItems}
-        
-        ></Foods>
-      
-    </div>
+      <div className="App">
+
+        <h3 className="title">Just Food Online Shop</h3>
+
+        <h4 className="subTitle">Menu Availability</h4>
+        <ul className="ulApp">
+
+          {menuItems.map((item) => {
+            return (
+              <li key={item.id} className="liApp">
+                {item.name} - {item.quantity}
+              </li>
+            );
+          })}
+        </ul>
+
+
+
+        <Foods/>
+
+      </div>
     </foodItemsContext.Provider>
   );
 };

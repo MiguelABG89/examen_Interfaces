@@ -1,16 +1,25 @@
-import React, {  useState } from "react";
+import React, { useContext, useState } from "react";
 import "./Foods.css";
 import FoodOrder from "./FoodOrder";
-const Foods = (props) => {
+import { foodItemsContext, foodOrderContext } from "./Context";
+
+const Foods = () => {
   const [selectedFood, setSelectedFood] = useState("");
+
+  const Contexto = useContext(foodItemsContext);
 
   const handleSelect = (event) => {
     setSelectedFood(
-      props.foodItems.find((item) => {
+      Contexto.menuItems.foodItems.find((item) => {
         return item.id === parseInt(event.currentTarget.dataset.id);
       })
     );
   };
+
+  const FoodOrderCtxValue = {
+    food: selectedFood,
+    returnToMenu: () => setSelectedFood("")
+  }
 
   return (
     <>
@@ -18,7 +27,7 @@ const Foods = (props) => {
         <div>
           <h4 className="foodTitle">Choose from our Menu</h4>
           <ul className="ulFoods">
-            {props.foodItems.map((item) => {
+            {Contexto.menuItems.foodItems.map((item) => {
               return (
                 <li
                   key={item.id}
@@ -42,10 +51,9 @@ const Foods = (props) => {
         </div>
       )}
       {selectedFood && (
-        <FoodOrder
-          food={selectedFood}
-          returnToMenu={() => setSelectedFood("")}
-        />
+        <foodOrderContext.Provider value={FoodOrderCtxValue}>
+          <FoodOrder/>
+        </foodOrderContext.Provider>
       )}
     </>
   );
