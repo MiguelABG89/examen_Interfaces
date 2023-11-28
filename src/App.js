@@ -1,7 +1,7 @@
 import "./App.css";
 import React, { useState } from "react";
 import Foods from "./Foods";
-import foodItemsContext from "./Context";
+import {foodItemsContext} from "./contexto/AppContext";
 const App = () => {
   const [isChooseFoodPage, setIsChooseFoodPage] = useState(false);
   const [menuItems, setMenuItems] = useState([
@@ -39,9 +39,13 @@ const App = () => {
     },
   ]);
 
+  const FoodItemCtxValue={
+    menuItem: menuItems,
+   
+  }
 
   return (
-    <foodItemsContext.Provider value={menuItems}>
+    <foodItemsContext.Provider value={FoodItemCtxValue}>
       <div className="App">
 
         <h3 className="title">Just Food Online Shop</h3>

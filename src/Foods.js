@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import "./Foods.css";
 import FoodOrder from "./FoodOrder";
-import { foodItemsContext, foodOrderContext } from "./Context";
+import { foodItemsContext, foodOrderContext } from "./contexto/AppContext";
 
 const Foods = () => {
   const [selectedFood, setSelectedFood] = useState("");
@@ -10,13 +10,14 @@ const Foods = () => {
 
   const handleSelect = (event) => {
     setSelectedFood(
-      Contexto.menuItems.foodItems.find((item) => {
+      Contexto.menuItem.find((item) => {
         return item.id === parseInt(event.currentTarget.dataset.id);
       })
     );
   };
 
   const FoodOrderCtxValue = {
+
     food: selectedFood,
     returnToMenu: () => setSelectedFood("")
   }
@@ -27,7 +28,7 @@ const Foods = () => {
         <div>
           <h4 className="foodTitle">Choose from our Menu</h4>
           <ul className="ulFoods">
-            {Contexto.menuItems.foodItems.map((item) => {
+            {Contexto.menuItem.map((item) => {
               return (
                 <li
                   key={item.id}

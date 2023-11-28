@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from "react";
 import "./FoodOrder.css";
 import { useContext } from "react";
-import { foodItemsContext,foodOrderContext } from "./Context";
+import { foodItemsContext,foodOrderContext } from "./contexto/AppContext";
 
 const FoodOrder = () => {
 
@@ -19,6 +19,7 @@ const FoodOrder = () => {
 
   const handleClick = () => {
     setIsOrdered(true); //show message
+
 
   };
 
